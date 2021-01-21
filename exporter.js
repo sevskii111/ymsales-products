@@ -66,9 +66,14 @@ for (const code of codes) {
     //console.log(categories);
     //    console.log(result.length);
     if (products.has(product)) {
-      const productObj = parseProduct(product, code);
-      if (productObj !== null) {
-        result.push(JSON.parse(JSON.stringify(productObj)));
+      try {
+        const productObj = parseProduct(product, code);
+        if (productObj !== null) {
+          result.push(JSON.parse(JSON.stringify(productObj)));
+        }
+      } catch (e) {
+        console.log(product);
+        console.log(e);
       }
     }
   }
